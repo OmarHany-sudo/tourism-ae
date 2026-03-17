@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OrcaTech | Tourism Companies in UAE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red: #C0392B;
+  --red-mid: #E74C3C;
+  --black: #0A0A0A;
+  --dark: #111111;
+  --dark-mid: #181818;
+  --dark-light: #1F1F1F;
+  --silver: #8C9BAA;
+  --silver-light: #B8C8D8;
+  --white: #F8F8F8;
+  --gold: #D4A843;
+  --gold-light: #EFC86A;
+  --success: #27AE60;
+  --font-ar: 'Tajawal', sans-serif;
+  --font-en: 'DM Sans', sans-serif;
+  --font-display: 'Syne', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font-ar);
+  overflow-x: hidden;
+}
+body.en { font-family: var(--font-en); direction: ltr; }
+
+/* Grid texture */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(192,57,43,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(192,57,43,0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none; z-index: 0;
+}
+
+/* ─── NAV ─── */
+.lang-bar {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 1000;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 40px;
+  background: rgba(10,10,10,0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.logo { font-family: var(--font-display); font-size: 1.5rem; color: var(--red-mid); letter-spacing: 1px; text-decoration: none; }
+.logo span { color: var(--white); }
+.lang-toggle { display: flex; gap: 4px; background: rgba(255,255,255,0.04); border-radius: 6px; padding: 4px; border: 1px solid rgba(255,255,255,0.08); }
+.lang-btn { padding: 6px 18px; border: none; background: transparent; color: var(--silver); font-size: 0.85rem; font-weight: 600; border-radius: 4px; cursor: pointer; transition: all 0.3s; font-family: var(--font-en); }
+.lang-btn.active { background: var(--red-mid); color: #fff; }
+
+/* ─── HERO ─── */
+.hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; padding-top: 80px; }
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 70% at 80% 30%, rgba(192,57,43,0.1) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 60% at 20% 80%, rgba(212,168,67,0.05) 0%, transparent 60%),
+    linear-gradient(170deg, #0A0A0A 0%, #130808 50%, #0A0A0A 100%);
+}
+
+/* Burj Khalifa silhouette */
+.hero-skyline {
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 45%; height: 80%;
+  opacity: 0.05;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 600'%3E%3Crect x='230' y='0' width='20' height='600' fill='%23C0392B'/%3E%3Crect x='220' y='100' width='40' height='500' fill='%23C0392B'/%3E%3Crect x='210' y='200' width='60' height='400' fill='%23C0392B'/%3E%3Crect x='195' y='280' width='90' height='320' fill='%23C0392B'/%3E%3Crect x='100' y='350' width='40' height='250' fill='%23C0392B'/%3E%3Crect x='95' y='380' width='50' height='220' fill='%23C0392B'/%3E%3Crect x='360' y='370' width='50' height='230' fill='%23C0392B'/%3E%3Crect x='370' y='400' width='60' height='200' fill='%23C0392B'/%3E%3C/svg%3E") no-repeat bottom right;
+  background-size: contain;
+}
+
+.hero-content { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 60px 40px; width: 100%; }
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(192,57,43,0.1);
+  border: 1px solid rgba(192,57,43,0.3);
+  border-radius: 6px; padding: 8px 20px;
+  font-size: 0.82rem; color: var(--red-mid);
+  margin-bottom: 32px; font-weight: 600;
+  letter-spacing: 1px; text-transform: uppercase;
+  animation: fadeUp 0.8s ease both;
+}
+
+.hero-title {
+  font-size: clamp(2.2rem, 4.5vw, 4.5rem);
+  font-weight: 900; line-height: 1.15;
+  margin-bottom: 24px;
+  animation: fadeUp 0.8s 0.15s ease both;
+  font-family: var(--font-display);
+}
+body.en .hero-title { font-family: var(--font-display); }
+
+.hero-title .accent { color: var(--red-mid); }
+.hero-title .gold { color: var(--gold); }
+.hero-title .block { display: block; }
+
+.hero-sub {
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  color: var(--silver); max-width: 560px;
+  line-height: 1.85; margin-bottom: 40px;
+  font-weight: 300; font-family: var(--font-ar);
+  animation: fadeUp 0.8s 0.3s ease both;
+}
+body.en .hero-sub { font-family: var(--font-en); }
+
+.hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; animation: fadeUp 0.8s 0.45s ease both; }
+
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--red-mid); color: #fff;
+  padding: 16px 36px; border-radius: 6px;
+  font-weight: 700; font-size: 1rem;
+  text-decoration: none; transition: all 0.3s;
+  box-shadow: 0 8px 32px rgba(192,57,43,0.3);
+}
+.btn-primary:hover { background: var(--red); transform: translateY(-3px); box-shadow: 0 16px 48px rgba(192,57,43,0.4); }
+
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: transparent; color: var(--white);
+  padding: 16px 36px; border-radius: 6px;
+  font-weight: 600; font-size: 1rem;
+  text-decoration: none; transition: all 0.3s;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+.btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ROI counter strip */
+.roi-strip {
+  display: flex; gap: 0;
+  margin-top: 64px; padding-top: 48px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  animation: fadeUp 0.8s 0.6s ease both;
+  flex-wrap: wrap;
+}
+.roi-item {
+  flex: 1; min-width: 140px;
+  padding: 0 32px 0 0;
+  border-inline-end: 1px solid rgba(255,255,255,0.06);
+  margin-inline-end: 32px;
+}
+.roi-item:last-child { border: none; margin: 0; }
+body.en .roi-item { padding: 0 32px 0 0; border-right: 1px solid rgba(255,255,255,0.06); border-left: none; }
+body.en .roi-item:last-child { border: none; }
+
+.roi-num { font-size: 2.2rem; font-weight: 800; color: var(--red-mid); font-family: var(--font-display); line-height: 1; }
+.roi-label { font-size: 0.78rem; color: var(--silver); margin-top: 6px; line-height: 1.4; }
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+
+/* ─── SECTION BASE ─── */
+section { position: relative; z-index: 1; }
+.section-inner { max-width: 1200px; margin: 0 auto; padding: 100px 40px; }
+.section-label { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--red-mid); margin-bottom: 16px; }
+.section-title { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 900; line-height: 1.25; margin-bottom: 16px; font-family: var(--font-display); }
+body.en .section-title { font-family: var(--font-display); }
+.section-sub { font-size: 1.05rem; color: var(--silver); line-height: 1.8; max-width: 560px; font-weight: 300; }
+
+/* ─── PAIN POINTS ─── */
+.pain-section { background: var(--dark); }
+.pain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1px; margin-top: 60px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.04); border-radius: 16px; overflow: hidden; }
+.pain-card { background: var(--dark); padding: 32px; transition: all 0.3s; }
+.pain-card:hover { background: var(--dark-mid); }
+.pain-icon { font-size: 1.6rem; margin-bottom: 14px; }
+.pain-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; color: var(--white); }
+.pain-card p { font-size: 0.88rem; color: var(--silver); line-height: 1.65; }
+
+/* ─── ROI CALCULATOR ─── */
+.roi-section { background: var(--dark-mid); }
+.roi-calc {
+  background: var(--dark-light); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px; padding: 48px; margin-top: 60px;
+}
+.roi-calc-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 32px; color: var(--white); }
+.roi-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 40px; }
+@media(max-width:600px){ .roi-inputs{grid-template-columns:1fr;} }
+.input-group { display: flex; flex-direction: column; gap: 8px; }
+.input-group label { font-size: 0.82rem; color: var(--silver); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+.input-group input {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+  color: var(--white); padding: 14px 18px; border-radius: 8px;
+  font-size: 1.1rem; font-weight: 600; width: 100%;
+  font-family: var(--font-en); transition: border-color 0.3s;
+}
+.input-group input:focus { outline: none; border-color: var(--red-mid); }
+.roi-result {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 24px;
+  padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.06);
+}
+@media(max-width:600px){ .roi-result{grid-template-columns:1fr;} }
+.result-item { text-align: center; }
+.result-val { font-size: 2rem; font-weight: 800; font-family: var(--font-display); line-height: 1; }
+.result-val.positive { color: var(--success); }
+.result-val.negative { color: #E74C3C; }
+.result-val.neutral { color: var(--gold); }
+.result-label { font-size: 0.78rem; color: var(--silver); margin-top: 6px; line-height: 1.3; }
+
+/* ─── PACKAGES ─── */
+.packages-section { background: var(--dark-light); }
+.packages-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 60px; }
+@media(max-width:900px){ .packages-grid{grid-template-columns:1fr;max-width:480px;margin-inline:auto;} }
+
+.package-card {
+  border-radius: 16px; padding: 40px 32px;
+  border: 1px solid rgba(255,255,255,0.07);
+  background: var(--dark); transition: all 0.4s; position: relative; overflow: hidden;
+}
+.package-card.featured {
+  background: linear-gradient(160deg, rgba(192,57,43,0.1), rgba(192,57,43,0.04));
+  border-color: rgba(192,57,43,0.4);
+  transform: scale(1.04);
+  box-shadow: 0 32px 80px rgba(192,57,43,0.15);
+}
+.package-card:hover:not(.featured) { transform: translateY(-8px); border-color: rgba(192,57,43,0.2); }
+.featured-badge {
+  position: absolute; top: 20px;
+  inset-inline-start: 50%; transform: translateX(-50%);
+  background: var(--red-mid); color: #fff;
+  font-size: 0.72rem; font-weight: 800;
+  padding: 5px 18px; border-radius: 4px;
+  text-transform: uppercase; white-space: nowrap;
+}
+.pkg-name { font-size: 1.5rem; font-weight: 800; color: var(--red-mid); margin-bottom: 4px; margin-top: 32px; font-family: var(--font-display); }
+.pkg-sub { font-size: 0.88rem; color: var(--silver); margin-bottom: 24px; }
+.pkg-price-block { margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.pkg-price { font-size: 2rem; font-weight: 800; color: var(--white); font-family: var(--font-display); line-height: 1; }
+.pkg-price .currency { font-size: 0.9rem; color: var(--silver); margin-inline-start: 4px; }
+.pkg-equiv { font-size: 0.82rem; color: var(--silver); margin-top: 8px; }
+.pkg-equiv span { color: var(--success); font-weight: 600; }
+.pkg-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+.pkg-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.87rem; color: #B0B8C4; line-height: 1.4; }
+.pkg-features li::before { content: '→'; color: var(--red-mid); font-weight: 800; flex-shrink: 0; }
+.pkg-cta { display: block; text-align: center; padding: 14px 24px; border-radius: 6px; font-weight: 700; font-size: 0.95rem; text-decoration: none; transition: all 0.3s; cursor: pointer; border: none; width: 100%; }
+.pkg-cta.primary { background: var(--red-mid); color: #fff; box-shadow: 0 8px 24px rgba(192,57,43,0.3); }
+.pkg-cta.primary:hover { background: var(--red); transform: translateY(-2px); }
+.pkg-cta.outline { background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,0.12); }
+.pkg-cta.outline:hover { border-color: var(--red-mid); color: var(--red-mid); }
+
+/* ─── CASE STUDIES ─── */
+.cases-section { background: var(--dark); }
+.cases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px,1fr)); gap: 24px; margin-top: 60px; }
+.case-card {
+  background: var(--dark-mid); border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 16px; padding: 40px; transition: all 0.4s;
+  position: relative;
+}
+.case-card:hover { transform: translateY(-6px); border-color: rgba(192,57,43,0.2); }
+.case-tag { display: inline-block; background: rgba(192,57,43,0.12); color: var(--red-mid); font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 5px 14px; border-radius: 4px; margin-bottom: 20px; }
+.case-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 28px; }
+.metric-val { font-size: 1.8rem; font-weight: 800; color: var(--gold); font-family: var(--font-display); line-height: 1; }
+.metric-label { font-size: 0.76rem; color: var(--silver); margin-top: 4px; line-height: 1.3; }
+.case-quote { font-size: 0.88rem; color: var(--silver-light); line-height: 1.8; font-style: italic; padding: 18px; background: rgba(192,57,43,0.05); border-radius: 8px; border-inline-start: 3px solid var(--red-mid); }
+
+/* ─── WHATSAPP CTA ─── */
+.whatsapp-section { background: var(--dark-mid); }
+.cta-box {
+  background: var(--dark-light); border: 1px solid rgba(192,57,43,0.2);
+  border-radius: 20px; padding: 64px;
+  text-align: center; position: relative; overflow: hidden;
+}
+.cta-box::before {
+  content: '';
+  position: absolute; top: -50%; left: -50%; right: -50%; bottom: -50%;
+  background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(192,57,43,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cta-box h2 { font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 900; margin-bottom: 16px; font-family: var(--font-display); }
+body.en .cta-box h2 { font-family: var(--font-display); }
+.cta-box h2 .accent { color: var(--red-mid); }
+.cta-box p { font-size: 1.05rem; color: var(--silver); max-width: 520px; margin: 0 auto 40px; line-height: 1.7; }
+.cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.whatsapp-btn { display: inline-flex; align-items: center; gap: 12px; background: #25D366; color: #fff; padding: 18px 40px; border-radius: 6px; font-weight: 800; font-size: 1.05rem; text-decoration: none; transition: all 0.3s; box-shadow: 0 8px 32px rgba(37,211,102,0.25); }
+.whatsapp-btn:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(37,211,102,0.35); }
+.whatsapp-btn svg { width: 26px; height: 26px; }
+
+footer { background: #050505; padding: 40px; text-align: center; border-top: 1px solid rgba(255,255,255,0.04); }
+footer p { font-size: 0.85rem; color: var(--silver); }
+.footer-logo { font-family: var(--font-display); font-size: 1.4rem; color: var(--red-mid); margin-bottom: 12px; display: block; }
+
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media(max-width:768px){ .lang-bar{padding:12px 20px;} .hero-content{padding:40px 20px;} .section-inner{padding:70px 20px;} .roi-calc{padding:28px;} .cta-box{padding:40px 24px;} .cases-grid{grid-template-columns:1fr;} }
+
+[data-lang="ar"]{display:block;} [data-lang="en"]{display:none;}
+body.en [data-lang="ar"]{display:none;} body.en [data-lang="en"]{display:block;}
+span[data-lang]{display:none;} span[data-lang="ar"]{display:inline;}
+body.en span[data-lang="ar"]{display:none;} body.en span[data-lang="en"]{display:inline;}
+</style>
+</head>
+<body>
+
+<nav class="lang-bar">
+  <a href="#" class="logo">Orca<span>Tech</span></a>
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('ar')" id="btn-ar">العربية</button>
+    <button class="lang-btn" onclick="setLang('en')" id="btn-en">English</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-skyline"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🇦🇪 UAE Tourism Technology</div>
+    <h1 class="hero-title">
+      <span data-lang="ar">
+        <span class="block">توقف عن <span class="accent">دفع العمولات.</span></span>
+        <span class="block">ابدأ <span class="gold">تملّك عملاءك.</span></span>
+      </span>
+      <span data-lang="en">
+        <span class="block">Stop <span class="accent">Paying Commissions.</span></span>
+        <span class="block">Start <span class="gold">Owning Your Customers.</span></span>
+      </span>
+    </h1>
+    <p class="hero-sub">
+      <span data-lang="ar">شركات السياحة في الإمارات تدفع 20-30% عمولة لـ OTAs على كل حجز. نبنيلك منظومة حجز مباشر تحرّرك من هذه التبعية — وتحوّل مواقعهم إلى قناة واحدة ضمن منظومة تملكها أنت.</span>
+      <span data-lang="en">UAE tourism businesses pay 20-30% commission to OTAs on every booking. We build you a direct booking system that breaks this dependency — and turns their platforms into just one channel in an ecosystem you own.</span>
+    </p>
+    <div class="hero-ctas">
+      <a href="#whatsapp" class="btn-primary">
+        <span data-lang="ar">احسب عائد استثمارك</span>
+        <span data-lang="en">Calculate Your ROI</span> ↓
+      </a>
+      <a href="#packages" class="btn-secondary">
+        <span data-lang="ar">شاهد الباقات</span>
+        <span data-lang="en">View Packages</span>
+      </a>
+    </div>
+    <div class="roi-strip">
+      <div class="roi-item">
+        <span class="roi-num">890%</span>
+        <span class="roi-label" data-lang="ar">عائد الاستثمار في السنة الأولى</span>
+        <span class="roi-label" data-lang="en">First-Year ROI (Avg.)</span>
+      </div>
+      <div class="roi-item">
+        <span class="roi-num">45 يوم</span>
+        <span class="roi-label" data-lang="ar">حتى استرداد التكلفة الكاملة</span>
+        <span class="roi-label" data-lang="en">Days to Full Payback</span>
+      </div>
+      <div class="roi-item">
+        <span class="roi-num">AED 680K</span>
+        <span class="roi-label" data-lang="ar">متوسط العمولات المُوفَّرة سنوياً</span>
+        <span class="roi-label" data-lang="en">Avg. Commissions Saved/Year</span>
+      </div>
+      <div class="roi-item">
+        <span class="roi-num">4–6</span>
+        <span class="roi-label" data-lang="ar">أسابيع للإطلاق</span>
+        <span class="roi-label" data-lang="en">Weeks to Launch</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN POINTS -->
+<section class="pain-section">
+  <div class="section-inner">
+    <p class="section-label" data-lang="ar">التحديات</p>
+    <p class="section-label" data-lang="en">The Challenges</p>
+    <h2 class="section-title reveal">
+      <span data-lang="ar">المشاكل التي يواجهها كل مشغّل سياحي في الإمارات</span>
+      <span data-lang="en">Problems Every UAE Tourism Operator Faces</span>
+    </h2>
+    <div class="pain-grid">
+      <div class="pain-card reveal">
+        <div class="pain-icon">💸</div>
+        <h3><span data-lang="ar">فخ عمولات OTAs</span><span data-lang="en">The OTA Commission Trap</span></h3>
+        <p><span data-lang="ar">GetYourGuide, Viator, Klook — كل حجز تدفع فيه 20-30%. أنت تبني أعمالهم، لا عملك.</span><span data-lang="en">GetYourGuide, Viator, Klook — 20-30% per booking. You're building their business, not yours.</span></p>
+      </div>
+      <div class="pain-card reveal">
+        <div class="pain-icon">⚔️</div>
+        <h3><span data-lang="ar">500+ منافس يبيع نفس الشيء</span><span data-lang="en">500+ Competitors Selling the Same Thing</span></h3>
+        <p><span data-lang="ar">كيف تتميز في سوق يبيع الجميع فيه "سفاري صحراوي"؟ التميز يأتي من العلامة التجارية الرقمية.</span><span data-lang="en">How do you stand out when everyone sells "desert safari"? Differentiation comes from digital brand.</span></p>
+      </div>
+      <div class="pain-card reveal">
+        <div class="pain-icon">📊</div>
+        <h3><span data-lang="ar">لا بيانات = لا قرارات ذكية</span><span data-lang="en">No Data = No Smart Decisions</span></h3>
+        <p><span data-lang="ar">تعرف كم بعت، لكن لا تعرف من أين جاء العميل أو لماذا غادر بدون حجز.</span><span data-lang="en">You know what you sold, but not where customers came from or why they left without booking.</span></p>
+      </div>
+      <div class="pain-card reveal">
+        <div class="pain-icon">🌍</div>
+        <h3><span data-lang="ar">200+ جنسية = 200+ توقع</span><span data-lang="en">200+ Nationalities = 200+ Expectations</span></h3>
+        <p><span data-lang="ar">كل سائح يأتي بتوقعات مختلفة في الدفع واللغة والخدمة. منظومة موحدة تحل هذا.</span><span data-lang="en">Each tourist brings different payment, language, and service expectations. One unified system solves this.</span></p>
+      </div>
+      <div class="pain-card reveal">
+        <div class="pain-icon">📈</div>
+        <h3><span data-lang="ar">سقف النمو</span><span data-lang="en">The Growth Ceiling</span></h3>
+        <p><span data-lang="ar">كل موسم نفس النضال. لا تستطيع التوسع دون حرق فريقك أو رفع تكاليفك.</span><span data-lang="en">Same struggle every season. Can't scale without burning out your team or exploding costs.</span></p>
+      </div>
+      <div class="pain-card reveal">
+        <div class="pain-icon">🔄</div>
+        <h3><span data-lang="ar">لا علاقة مع العميل</span><span data-lang="en">No Customer Relationship</span></h3>
+        <p><span data-lang="ar">العميل يحجز عبر OTA، يسافر، ويرحل. لا بريد، لا متابعة، لا إعادة حجز. OTA تملك العلاقة.</span><span data-lang="en">Customer books via OTA, visits, leaves. No email, no follow-up, no rebooking. OTA owns the relationship.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROI CALCULATOR -->
+<section class="roi-section">
+  <div class="section-inner">
+    <p class="section-label" data-lang="ar">حاسبة العائد على الاستثمار</p>
+    <p class="section-label" data-lang="en">ROI Calculator</p>
+    <h2 class="section-title reveal">
+      <span data-lang="ar">احسب كم ستوفر مع OrcaTech</span>
+      <span data-lang="en">Calculate How Much You'll Save</span>
+    </h2>
+    <div class="roi-calc reveal">
+      <p class="roi-calc-title">
+        <span data-lang="ar">أدخل أرقام عملك الحالية:</span>
+        <span data-lang="en">Enter your current business numbers:</span>
+      </p>
+      <div class="roi-inputs">
+        <div class="input-group">
+          <label><span data-lang="ar">الإيرادات السنوية (AED)</span><span data-lang="en">Annual Revenue (AED)</span></label>
+          <input type="number" id="revenue" value="3000000" oninput="calcROI()">
+        </div>
+        <div class="input-group">
+          <label><span data-lang="ar">نسبة عمولة OTA الحالية (%)</span><span data-lang="en">Current OTA Commission Rate (%)</span></label>
+          <input type="number" id="commission" value="25" min="0" max="50" oninput="calcROI()">
+        </div>
+        <div class="input-group">
+          <label><span data-lang="ar">نسبة الحجوزات عبر OTA (%)</span><span data-lang="en">% of Bookings via OTA</span></label>
+          <input type="number" id="otaPct" value="70" min="0" max="100" oninput="calcROI()">
+        </div>
+        <div class="input-group">
+          <label><span data-lang="ar">الباقة المختارة (AED)</span><span data-lang="en">Selected Package (AED)</span></label>
+          <input type="number" id="pkgCost" value="75000" oninput="calcROI()">
+        </div>
+      </div>
+      <div class="roi-result">
+        <div class="result-item">
+          <div class="result-val negative" id="commPaid">AED 525K</div>
+          <div class="result-label"><span data-lang="ar">عمولات تدفعها سنوياً الآن</span><span data-lang="en">Commissions Paid Annually Now</span></div>
+        </div>
+        <div class="result-item">
+          <div class="result-val positive" id="commSaved">AED 264K</div>
+          <div class="result-label"><span data-lang="ar">توفير متوقع سنوياً (بتحويل 50%)</span><span data-lang="en">Projected Annual Savings (shifting 50%)</span></div>
+        </div>
+        <div class="result-item">
+          <div class="result-val neutral" id="payback">4.3 أشهر</div>
+          <div class="result-label"><span data-lang="ar">مدة استرداد التكلفة</span><span data-lang="en">Payback Period</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section class="packages-section" id="packages">
+  <div class="section-inner">
+    <p class="section-label" data-lang="ar">الباقات والأسعار</p>
+    <p class="section-label" data-lang="en">Packages & Pricing</p>
+    <h2 class="section-title reveal">
+      <span data-lang="ar">استثمار يُدفع لنفسه في أسابيع</span>
+      <span data-lang="en">An Investment That Pays for Itself in Weeks</span>
+    </h2>
+    <div class="packages-grid">
+
+      <!-- Elevate -->
+      <div class="package-card reveal">
+        <div class="pkg-name" data-lang="ar">Elevate</div>
+        <div class="pkg-name" data-lang="en">Elevate</div>
+        <div class="pkg-sub"><span data-lang="ar">للمشغّلين الراغبين في التحسين</span><span data-lang="en">For operators ready to optimize</span></div>
+        <div class="pkg-price-block">
+          <div class="pkg-price">35,000 <span class="currency">AED</span></div>
+          <div class="pkg-equiv">
+            <span data-lang="ar">= <span>أقل من شهر عمولات OTA</span></span>
+            <span data-lang="en">= <span>Less than 1 month of OTA commissions</span></span>
+          </div>
+        </div>
+        <ul class="pkg-features">
+          <li><span data-lang="ar">تحسين الموقع الحالي وتحويله لمحرك حجز</span><span data-lang="en">Transform existing website into booking engine</span></li>
+          <li><span data-lang="ar">تحسين معدل التحويل (CRO)</span><span data-lang="en">Conversion rate optimization (CRO)</span></li>
+          <li><span data-lang="ar">SEO + Google Analytics</span><span data-lang="en">SEO + Google Analytics</span></li>
+          <li><span data-lang="ar">تكامل Stripe/PayTabs/Apple Pay</span><span data-lang="en">Stripe/PayTabs/Apple Pay integration</span></li>
+          <li><span data-lang="ar">ثنائي اللغة عربي/إنجليزي</span><span data-lang="en">Arabic/English bilingual</span></li>
+        </ul>
+        <a href="#whatsapp" class="pkg-cta outline"><span data-lang="ar">ابدأ</span><span data-lang="en">Get Started</span></a>
+      </div>
+
+      <!-- Dominate (featured) -->
+      <div class="package-card featured reveal">
+        <div class="featured-badge"><span data-lang="ar">⭐ الأكثر طلباً</span><span data-lang="en">⭐ Most Popular</span></div>
+        <div class="pkg-name">Dominate</div>
+        <div class="pkg-sub"><span data-lang="ar">للمشغّلين الطموحين لتميّز حقيقي</span><span data-lang="en">For ambitious operators seeking real differentiation</span></div>
+        <div class="pkg-price-block">
+          <div class="pkg-price">75,000 <span class="currency">AED</span></div>
+          <div class="pkg-equiv">
+            <span data-lang="ar">= <span>يُسترد كاملاً في 45 يوماً</span></span>
+            <span data-lang="en">= <span>Fully recovered in ~45 days</span></span>
+          </div>
+        </div>
+        <ul class="pkg-features">
+          <li><span data-lang="ar">تصميم مخصص بالكامل</span><span data-lang="en">Fully custom design</span></li>
+          <li><span data-lang="ar">محرك حجز متقدم + تسعير ديناميكي</span><span data-lang="en">Advanced booking engine + dynamic pricing</span></li>
+          <li><span data-lang="ar">CRM + أتمتة التسويق</span><span data-lang="en">CRM + marketing automation</span></li>
+          <li><span data-lang="ar">برنامج ولاء وإعادة الحجز</span><span data-lang="en">Loyalty & rebooking program</span></li>
+          <li><span data-lang="ar">متعدد العملات (20+ عملة)</span><span data-lang="en">Multi-currency (20+ currencies)</span></li>
+          <li><span data-lang="ar">تقارير ROI شهرية</span><span data-lang="en">Monthly ROI reports</span></li>
+          <li><span data-lang="ar">ضمان زيادة 20% في الحجوزات المباشرة</span><span data-lang="en">20% direct booking increase guarantee</span></li>
+        </ul>
+        <a href="#whatsapp" class="pkg-cta primary"><span data-lang="ar">احصل على عرض</span><span data-lang="en">Get Proposal</span></a>
+      </div>
+
+      <!-- Legacy -->
+      <div class="package-card reveal">
+        <div class="pkg-name">Legacy</div>
+        <div class="pkg-sub"><span data-lang="ar">لقادة السوق الذين يبنون إمبراطوريات</span><span data-lang="en">For market leaders building empires</span></div>
+        <div class="pkg-price-block">
+          <div class="pkg-price">150,000+ <span class="currency">AED</span></div>
+          <div class="pkg-equiv">
+            <span data-lang="ar"><span>حسب متطلباتك</span></span>
+            <span data-lang="en"><span>Custom to your requirements</span></span>
+          </div>
+        </div>
+        <ul class="pkg-features">
+          <li><span data-lang="ar">منظومة متكاملة مع تطبيق موبايل</span><span data-lang="en">Full ecosystem with mobile app</span></li>
+          <li><span data-lang="ar">AI chatbot بالعربية والإنجليزية</span><span data-lang="en">AI chatbot in Arabic & English</span></li>
+          <li><span data-lang="ar">تكامل OTA مع إدارة مركزية</span><span data-lang="en">OTA integration with central management</span></li>
+          <li><span data-lang="ar">لوحة تحليلات متقدمة</span><span data-lang="en">Advanced analytics dashboard</span></li>
+          <li><span data-lang="ar">SLA 99.9% uptime + دعم 24/7</span><span data-lang="en">99.9% uptime SLA + 24/7 support</span></li>
+          <li><span data-lang="ar">A/B testing مستمر</span><span data-lang="en">Continuous A/B testing</span></li>
+        </ul>
+        <a href="#whatsapp" class="pkg-cta outline"><span data-lang="ar">تحدث معنا</span><span data-lang="en">Let's Talk</span></a>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:32px;font-size:0.85rem;color:var(--silver);">
+      <span data-lang="ar">الدفع: 30% مقدم • 40% عند المرحلة الثانية • 30% عند الإطلاق | ضمان 20% زيادة في الحجوزات المباشرة خلال 90 يوماً أو نعمل مجاناً</span>
+      <span data-lang="en">Payment: 30% upfront • 40% milestone • 30% launch | Guaranteed 20% increase in direct bookings in 90 days or we work free</span>
+    </p>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section class="cases-section">
+  <div class="section-inner">
+    <p class="section-label" data-lang="ar">نتائج حقيقية</p>
+    <p class="section-label" data-lang="en">Real Results</p>
+    <h2 class="section-title reveal">
+      <span data-lang="ar">من التبعية للـ OTAs إلى تملّك العلاقة مع العميل</span>
+      <span data-lang="en">From OTA Dependency to Owning the Customer Relationship</span>
+    </h2>
+    <div class="cases-grid">
+      <div class="case-card reveal">
+        <div class="case-tag" data-lang="ar">سفاري صحراوي فاخر — دبي</div>
+        <div class="case-tag" data-lang="en">Premium Desert Safari — Dubai</div>
+        <div class="case-metrics">
+          <div class="metric"><span class="metric-val">52%</span><span class="metric-label" data-lang="ar">من الحجوزات مباشرة (كانت 15%)</span><span class="metric-label" data-lang="en">Direct Bookings (was 15%)</span></div>
+          <div class="metric"><span class="metric-val">AED 680K</span><span class="metric-label" data-lang="ar">عمولات موفَّرة سنوياً</span><span class="metric-label" data-lang="en">Annual Commissions Saved</span></div>
+          <div class="metric"><span class="metric-val">31%</span><span class="metric-label" data-lang="ar">هامش الربح (كان 18%)</span><span class="metric-label" data-lang="en">Net Margin (was 18%)</span></div>
+          <div class="metric"><span class="metric-val">890%</span><span class="metric-label" data-lang="ar">عائد الاستثمار في السنة الأولى</span><span class="metric-label" data-lang="en">First-Year ROI</span></div>
+        </div>
+        <div class="case-quote">
+          <span data-lang="ar">"كنت متشككاً. الـ OTAs كانوا 'آمنين'. لكن الأرقام لا تكذب. في 6 أشهر وفّرنا أكثر من تكلفة الموقع بأكمله. الآن نحن نملك علاقاتنا مع العملاء."</span>
+          <span data-lang="en">"I was skeptical. OTAs felt 'safe.' But the math doesn't lie. In 6 months, we saved more in commissions than the entire website cost. Now we own our customer relationships."</span>
+        </div>
+      </div>
+      <div class="case-card reveal">
+        <div class="case-tag" data-lang="ar">تجارب نيلية وبحرية — أبوظبي</div>
+        <div class="case-tag" data-lang="en">Marina & Dhow Experiences — Abu Dhabi</div>
+        <div class="case-metrics">
+          <div class="metric"><span class="metric-val">+180%</span><span class="metric-label" data-lang="ar">قيمة العميل مدى الحياة</span><span class="metric-label" data-lang="en">Customer Lifetime Value</span></div>
+          <div class="metric"><span class="metric-val">-40%</span><span class="metric-label" data-lang="ar">تكلفة اكتساب العميل</span><span class="metric-label" data-lang="en">Customer Acquisition Cost</span></div>
+          <div class="metric"><span class="metric-val">AED 650</span><span class="metric-label" data-lang="ar">متوسط الحجز المباشر</span><span class="metric-label" data-lang="en">Avg. Direct Booking Value</span></div>
+          <div class="metric"><span class="metric-val">4.9★</span><span class="metric-label" data-lang="ar">تقييم Google Business</span><span class="metric-label" data-lang="en">Google Business Rating</span></div>
+        </div>
+        <div class="case-quote">
+          <span data-lang="ar">"أفضل ما فعله النظام: الآن لديّ قاعدة بيانات بـ 4,200 عميل حجزوا معنا مباشرة. هذا أصل تجاري حقيقي لا يمكن لأي OTA أن يسرقه."</span>
+          <span data-lang="en">"The best thing the system did: I now have a database of 4,200 customers who booked directly with us. That's a real business asset no OTA can take away."</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="whatsapp-section" id="whatsapp">
+  <div class="section-inner">
+    <div class="cta-box reveal">
+      <h2>
+        <span data-lang="ar">حسبنا الأرقام.<br><span class="accent">متى ستحسبها أنت؟</span></span>
+        <span data-lang="en">We've Done the Math.<br><span class="accent">When Will You?</span></span>
+      </h2>
+      <p>
+        <span data-lang="ar">استشارة مجانية 30 دقيقة — نحلل عملياتك الحالية ونحسب عائد الاستثمار الدقيق لعملك. أرقام حقيقية، لا وعود.</span>
+        <span data-lang="en">Free 30-minute consultation — we analyze your current operations and calculate the exact ROI for your business. Real numbers, no promises.</span>
+      </p>
+      <div class="cta-buttons">
+        <a href="https://wa.me/201000000000?text=Hi,%20I'm%20interested%20in%20OrcaTech's%20services%20for%20my%20UAE%20tourism%20business"
+           class="whatsapp-btn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <span data-lang="ar">تحدث معنا على واتساب</span>
+          <span data-lang="en">Chat on WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-logo">Orca<span style="color:var(--white)">Tech</span></span>
+  <p><span data-lang="ar">© 2025 OrcaTech — متخصصون في التحول الرقمي لشركات السياحة في مصر والسعودية والإمارات</span><span data-lang="en">© 2025 OrcaTech — Digital transformation for tourism companies across Egypt, Saudi Arabia & UAE</span></p>
+  <p style="margin-top:8px;">
+    <a href="/tourism-eg.html" style="color:var(--silver);text-decoration:none;margin:0 12px;">🇪🇬 Egypt</a>
+    <a href="/tourism-sa.html" style="color:var(--silver);text-decoration:none;margin:0 12px;">🇸🇦 Saudi</a>
+    <a href="/tourism-ae.html" style="color:var(--red-mid);text-decoration:none;margin:0 12px;">🇦🇪 UAE</a>
+  </p>
+</footer>
+
+<script>
+function setLang(lang) {
+  const body = document.body, html = document.documentElement;
+  if (lang === 'en') { body.classList.add('en'); html.setAttribute('lang','en'); html.setAttribute('dir','ltr'); document.getElementById('btn-en').classList.add('active'); document.getElementById('btn-ar').classList.remove('active'); }
+  else { body.classList.remove('en'); html.setAttribute('lang','ar'); html.setAttribute('dir','rtl'); document.getElementById('btn-ar').classList.add('active'); document.getElementById('btn-en').classList.remove('active'); }
+  calcROI();
+}
+
+function calcROI() {
+  const rev = parseFloat(document.getElementById('revenue').value) || 0;
+  const comm = parseFloat(document.getElementById('commission').value) / 100 || 0;
+  const otaPct = parseFloat(document.getElementById('otaPct').value) / 100 || 0;
+  const pkg = parseFloat(document.getElementById('pkgCost').value) || 75000;
+  const isEn = document.body.classList.contains('en');
+
+  const totalComm = rev * otaPct * comm;
+  const savedComm = totalComm * 0.5;
+  const months = savedComm > 0 ? (pkg / (savedComm / 12)).toFixed(1) : '—';
+
+  const fmt = (n) => n >= 1000000 ? `AED ${(n/1000000).toFixed(1)}M` : n >= 1000 ? `AED ${Math.round(n/1000)}K` : `AED ${Math.round(n)}`;
+
+  document.getElementById('commPaid').textContent = fmt(totalComm);
+  document.getElementById('commSaved').textContent = fmt(savedComm);
+  document.getElementById('payback').textContent = months !== '—' ? (isEn ? `${months} months` : `${months} أشهر`) : '—';
+}
+
+calcROI();
+
+const observer = new IntersectionObserver((entries) => { entries.forEach((e,i) => { if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('visible'),i*80); observer.unobserve(e.target); } }); }, {threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
